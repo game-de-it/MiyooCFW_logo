@@ -15,9 +15,9 @@
 #define HEIGHT 240
 
 // background color (RGB)
-#define R 96
-#define G 148
-#define B 8
+#define R 0
+#define G 0
+#define B 0
 
 // delay until the logo starts being visible (unit: frames) (60 frames = 1 sec)
 #define ANIMDELAY 60
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
     	return -1;
     }
 
-    Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 1024);
+/*    Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 1024);
 	Mix_AllocateChannels(2);
 	SDL_RWops *RWops2;
 	Mix_Chunk *logosound;
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
     	printf("Error loading sound: %s\n", Mix_GetError());
     	return -1;
     }
-
+*/
 	int dest_y = (screen->h - logoimg->h) / 2;
 	uint32_t curr_time = SDL_GetTicks();
 	uint32_t old_time = curr_time;
@@ -107,9 +107,10 @@ int main(int argc, char* argv[]) {
 		dstrect.w = logoimg->w;
 		dstrect.h = logoimg->h;
 		SDL_BlitSurface(logoimg, NULL, screen, &dstrect);
-		if (i == dest_y) {
+/*		if (i == dest_y) {
 			Mix_PlayChannel(-1, logosound, 0);
 		}
+*/
 		while (curr_time < old_time + 16) {
 			curr_time = SDL_GetTicks();
 		}
@@ -127,9 +128,9 @@ int main(int argc, char* argv[]) {
 	}
 
 	SDL_FreeRW(RWops);
-	SDL_FreeRW(RWops2);
+//	SDL_FreeRW(RWops2);
 	SDL_FreeSurface(logoimg);
-	Mix_FreeChunk(logosound);
+//	Mix_FreeChunk(logosound);
 	quit();
 
 	return 0;
