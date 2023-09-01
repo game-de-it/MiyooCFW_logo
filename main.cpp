@@ -26,7 +26,7 @@
 #define ENDDELAY 3000
 
 //speed at which the logo moves (unit: pixels per frame)
-#define ANIMSPEED 1
+#define ANIMSPEED 10
 
 //---------------------------------------------------//
 
